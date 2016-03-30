@@ -12,7 +12,12 @@
 <!-- <button type="submit">Create Post!</button> -->
 <!-- </form> -->
 
+<!-- rails knows to come here from new method in posts_controller from 'new' -->
 <%=  form_tag(posts_path) do %>
+        <!-- forms default to: method: :post -->
+                                <!-- form_tage takes argument for where data goes
+                                posts_path- for uses route for where the data goes
+                              **path helpers gerate path, not what verb is used when request is sent**-->
     <div class="post-field">
         <%= label_tag("Title: ") %> <br/>
         <%= text_field_tag("title") %>

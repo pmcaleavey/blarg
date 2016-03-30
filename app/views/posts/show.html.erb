@@ -1,0 +1,10 @@
+<div class"post">
+  <h3 class"post-title"><%= link_to_unless_current(@post.title, post_path(@post)) %></h3>
+                        <!-- ^^link here unless current page -->
+  <p><%= @post.content %></p>
+      <!-- link_to defaults to 'method: :get' -->
+
+
+  <%= link_to("    Edit", edit_post_path(@post))%>
+  <%= link_to("    Delete", post_path(@post), method: :delete)%>
+</div>

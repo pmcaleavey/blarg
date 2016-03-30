@@ -1,9 +1,37 @@
-<%= link_to("Add a New Post!", posts_new_path) %>
+<%= link_to("Add a New Post!", posts_new_path) %> <!-- posts_new_path = "posts/new" the 'AS' in routes -->
 
 <h1>ALL OF THE BLOG POSTINGS</h1>
 
 <ul class="posts">
-  <% posts.each do |post| %>
-    <li class="blog-post">Title: <%= post.title %></li>
+  <% @posts.each do |post| %>
+    <li class="blog-post">Title:
+
+
+      <%= link_to(post.title, post_path(post))%>
+          <!-- link_to defaults to 'method: :get' -->
+
+
+      <%= link_to("    Edit", edit_post_path(post))%>
+      <%= link_to("    Delete", post_path(post), method: :delete)%>
+    </li>
+                      <!-- can also do: edit_post_path(id: post.id) post is object from db and grabs id from it-->
+                  <!-- path helper edit_post_path from rake routes      ((post) is the :id) how generates url-->
+
   <% end %>
 </ul>
+
+<!-- Modify the index view so that next to each post there's a link to edit the post -->
+
+<!-- partials look and compare w _post.html.erb a function call that creates html-->
+<!-- <ul class="posts">
+<%# binding.pry %>
+  <%#= posts.each do |post| %>
+    <%#= #render partial: "post", locals: { post: post } %>
+  <%# end %>
+</ul> -->
+
+<!-- def link_to(text_to_display, path)
+  x + y
+end
+
+link_to("Add a new post", "posts/new") -->

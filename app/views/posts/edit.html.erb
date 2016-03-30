@@ -1,0 +1,19 @@
+<%=  form_tag(post_path(@post), method: :put) do %>
+
+                              <!-- method: :put - says use the put verb bec all have same path -->
+
+    <div class="update-field">
+        <%= label_tag("Title: ") %> <br/>
+        <%= text_field_tag("title", @post.title) %>
+        <!-- input^^^       ^^name of param  ^^displaying post title -->
+    </div>
+
+    <div class="update-field">
+        <%= label_tag("Content: ") %> <br/>
+        <%= text_area_tag("content", @post.content) %>
+                            <!-- ^^can be any name and show up in params hash -->
+    </div>
+
+    <%= button_tag("Update Post") %>
+<% end %>
+<!-- post is the local variable created in the controller -->
