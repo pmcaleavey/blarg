@@ -1,9 +1,16 @@
 class PostsController < ApplicationController
   def index#get posts
-    @posts = Post.all##posts are all the blog posts#eventually use a gem to get a certain amount
+    all_posts = Post.all##posts are all the blog posts#eventually use a gem to get a certain amount
+    @posts = all_posts.page(params[:page]).per(5)
     render :index#, locals: { posts: posts }#what is passed in VIEWS ##call template, pass data to template --WHAT TEMPLATE??
     ##render :index - (same as irb in sinatra) - rails creates this on its own if I don’t
   end
+
+
+# modify the index method to be paginated with per_page size of 5. You'll need more than 5 posts
+# in the database to test that this works! Once the controller is updated to use pagination, ensure
+# the view is updated to switch between pages.
+
 
   def new
     render :new
@@ -14,7 +21,7 @@ class PostsController < ApplicationController
     new_post = Post.create(title: params["title"],
                            content: params["content"])
     redirect_to :root#after, take the user here
-    #^^directs to another method
+    #^^method that directs to another method
   end
 
   def edit#display form
@@ -29,8 +36,8 @@ class PostsController < ApplicationController
   end
 
   def update
-    post = Post.find(params[:id])#have post user wants to update
-    post.update(title: params["title"], content: params["content"])
+    @post = Post.find(params[:id])#have post user wants to update
+    @post.update(title: params["title"], content: params["content"])
     #calling Active Record 'update' method on post object(instance of post model)
     #title: & content: match Post table - params["anyname"] -params['word']- is in edit _tag
     redirect_to root_path
@@ -40,8 +47,8 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    post = Post.find(params["id"])
-    post.destroy
+    @post = Post.find(params["id"])
+    @post.destroy
     redirect_to :root
   end
 

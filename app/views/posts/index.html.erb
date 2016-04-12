@@ -1,6 +1,11 @@
 <%= link_to("Add a New Post!", posts_new_path) %> <!-- posts_new_path = "posts/new" the 'AS' in routes -->
 
+
+
+
 <h1>ALL OF THE BLOG POSTINGS</h1>
+
+<%= paginate @posts %>
 
 <ul class="posts">
   <% @posts.each do |post| %>

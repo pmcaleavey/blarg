@@ -11,7 +11,6 @@ Rails.application.routes.draw do
                                                    ##if has that route, goes to posts_controller new method
   ##^^url route specifies to go to posts_controller.rb and go to 'new' method in class
 
-
   post "posts", to: "posts#create", as: "posts"
 
   #Add a route to edit a specific post. It should have a route parameter.
@@ -20,6 +19,8 @@ Rails.application.routes.draw do
   get "posts/:id", to: "posts#show" # as: post - not needed because same route as update
   delete "posts/:id", to: "posts#destroy" # as: post
 
+
+  
 
   #create comment
   # get "posts/:id/comments/new", to: "comments#new", as: "comments_new"

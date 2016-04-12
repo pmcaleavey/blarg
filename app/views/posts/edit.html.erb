@@ -1,6 +1,6 @@
 <%=  form_tag(post_path(@post), method: :put) do %>
 
-                              <!-- method: :put - says use the put verb bec all have same path -->
+                <!-- why @post passed in?     method: :put - says use the put verb bec all have same path -->
 
     <div class="update-field">
         <%= label_tag("Title: ") %> <br/>
@@ -11,7 +11,8 @@
     <div class="update-field">
         <%= label_tag("Content: ") %> <br/>
         <%= text_area_tag("content", @post.content) %>
-                            <!-- ^^can be any name and show up in params hash -->
+                          <!-- ^^can be any name and show up in params hash -->
+                                    <!-- @post.content, is 'content:' from update method? -->
     </div>
 
     <%= button_tag("Update Post") %>
